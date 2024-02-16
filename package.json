@@ -6,6 +6,7 @@
     "jsonwebtoken": "^9.0.2",
     "mogoose": "^0.0.1-security",
     "mongodb": "^6.3.0",
+    "mongoose": "^8.1.2",
     "nodemon": "^3.0.3",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0"
