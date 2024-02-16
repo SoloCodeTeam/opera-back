@@ -1,0 +1,23 @@
+{
+    "swaggerDefinition" : {
+        "info": {
+            "title": "Opera Api",
+            "description": "Opera api information",
+            "version": "1.0.0",
+            "contact": {
+                "name": "Rewerd Company"
+            },
+            "servers":["http://localhost:5000"],
+            "basePath": "/",
+            "schemas": ["https", "https"]
+        },
+        "securityDefinition":{
+            "token": {
+                "type": "apiKey",
+                "name": "token",
+                "in": "header"
+            }
+        }
+    },
+    "apis": ["app.js","./routes/*.js"]
+}
