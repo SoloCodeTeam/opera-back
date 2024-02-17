@@ -11,7 +11,8 @@ dotenv.config();
 /**
  * @swagger
  * tags: 
- *      -- name : admin
+ *      - name : login
+ *      - name : admin
  */
 var options = {
     swaggerOptions:{
