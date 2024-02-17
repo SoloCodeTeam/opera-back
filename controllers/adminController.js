@@ -69,7 +69,7 @@ exports.putAdmin = async(req,res,next) => {
     }
 }
 
-exports.deleteAdmin = async(res,res,next) => {
+exports.deleteAdmin = async(req,res,next) => {
     try {
         const {token} = req.headers    
         await JWT.verify(token,process.env.JWT_KEY)
