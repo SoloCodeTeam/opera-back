@@ -9,7 +9,7 @@ exports.postLogin = async(req, res, next) => {
     }
     return await Product.find(body).then(async(data) => {
         if (data.length > 0) {
-            const token = await JWT.sign({id: data.id, name: data.name, surname:data.surname },process.env.JWT_KEY)
+            const token = await JWT.sign({id: data.id, name: data.name, surname:data.surname },process.env.JWT_KEY,{expiresIn:'2h'})
             res.status(200).json({data: data,token: token})
         } else {
             res.status(404).json({status: 404,message:"Login user not found"})  
@@ -21,4 +21,5 @@ exports.postLogin = async(req, res, next) => {
         next(err)
         }
     )
+
 }

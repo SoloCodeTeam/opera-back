@@ -11,7 +11,7 @@
             "basePath": "/",
             "schemas": ["https", "https"]
         },
-        "securityDefinition":{
+        "securityDefinitions":{
             "token": {
                 "type": "apiKey",
                 "name": "token",

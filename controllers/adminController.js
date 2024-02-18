@@ -57,7 +57,7 @@ exports.putAdmin = async(req,res,next) => {
             if(e.length == 0) return res.status(404).json({status: 404, message: `Admin not found on ${id}`})
         })
         return await Product.findByIdAndUpdate(id,body).then(data => {
-            res.status(200).json(data)
+            res.status(200).json({message: "Updated successfully"})
         }).catch(err => {
             if (!err.statusCode) {
                 err.satusCode = 500

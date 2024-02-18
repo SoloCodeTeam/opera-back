@@ -119,6 +119,6 @@ router.put("/admin/:adminId", adminController.putAdmin)
  *      '200':
  *        description: Admin removed successfully.
  */
-router.delete("admin/:adminId", adminController.deleteAdmin)
+router.delete("/admin/:adminId", adminController.deleteAdmin)
 
 module.exports = router;
