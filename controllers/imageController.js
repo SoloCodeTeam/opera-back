@@ -7,7 +7,7 @@ exports.postImage = async(req,res,next) => {
         await JWT.verify(token,process.env.JWT_KEY)
         const body = {
             image: req.params.img,
-            projectId: req.params.imageId,
+            projectId: req.params.projectId,
             category: "image"
         }
         return await Product.create(body).then(data => {
