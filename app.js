@@ -11,6 +11,7 @@ dotenv.config();
 //routes
 const adminRoute = require("./routes/admin")
 const loginRoute = require("./routes/login")
+const messageRoute = require("./routes/message")
 
 
 /**
@@ -18,6 +19,7 @@ const loginRoute = require("./routes/login")
  * tags: 
  *      - name : login
  *      - name : admin
+ *      - name : message
  */
 var options = {
     swaggerOptions:{
@@ -35,7 +37,7 @@ app.use((req,res,next) => {
     res.setHeader("Access-Control-Allow-Headers",'Content-Type,Authorization');
     next();
 })
-app.use("/api", loginRoute,adminRoute)
+app.use("/api", loginRoute,adminRoute,messageRoute)
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs,options))
 app.use((error,req,res,next)=>{
     console.log(error);

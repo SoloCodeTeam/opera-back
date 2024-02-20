@@ -21,6 +21,15 @@ const productSchema = mongoose.Schema(
         },
         password:{
             type: String,
+        },
+        phone:{
+            type: String,
+        },
+        message:{
+            type: String,
+        },
+        fullName:{
+            type: String,
         }
     },
     {
