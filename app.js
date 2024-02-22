@@ -12,7 +12,8 @@ dotenv.config();
 const adminRoute = require("./routes/admin")
 const loginRoute = require("./routes/login")
 const messageRoute = require("./routes/message")
-const imageRoute = require("./routes/image")
+const imageRoute = require("./routes/images")
+const projectRoute = require("./routes/project")
 
 /**
  * @swagger
@@ -21,6 +22,7 @@ const imageRoute = require("./routes/image")
  *      - name : admin
  *      - name : message
  *      - name : image
+ *      - name : project
  */
 var options = {
     swaggerOptions:{
