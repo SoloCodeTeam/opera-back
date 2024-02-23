@@ -3,7 +3,23 @@ const JWT = require("jsonwebtoken")
 
 exports.getProject = async(req,res,next) => {
     return await Product.find({category: "project"}).then(data => {
-        res.status(200).json(data)
+        let imageArr
+        const dataArr = []
+        data.map(async(e) => {
+            imageArr = null
+            await Product.find({category: "image", projectId: e._id}).then(d => {
+                imageArr = d
+            }).catch(err => {
+                imageArr = null
+            })
+            const body = {
+                title: e.title,
+                img: e.img,
+                images: imageArr
+            }
+            dataArr.push(body)
+        })
+        res.status(200).json(dataArr)
     }).catch(err => {
         if (!err.statusCode) {
             err.satusCode =500}
