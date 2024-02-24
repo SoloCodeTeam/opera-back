@@ -3,7 +3,7 @@ const JWT = require("jsonwebtoken")
 
 exports.postMessage = async(req,res,next) => {
     const body ={ 
-        fullName: req.body.name,
+        fullName: req.body.fullName,
         phone: req.body.phone,
         message: req.body.message,
         category: "message"

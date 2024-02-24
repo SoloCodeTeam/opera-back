@@ -13,18 +13,19 @@ const messageController = require("../controllers/messageController.js")
  *      - application/json
  *    parameters:
  *      - in: body
- *        name: get name
+ *        name: not required write anything
+ *        fullName: get name
  *        phone: get phone
  *        message: get message
  *        description: post message to DB.
  *        schema:
  *          type: object
  *          required:
- *            - name
+ *            - fullName
  *            - phone
  *            - message
  *          properties:
- *            name:
+ *            fullName:
  *              type: string
  *            phone:
  *              type: string
