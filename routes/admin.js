@@ -33,19 +33,15 @@ router.get("/admin", adminController.getAdmin)
  *    parameters:
  *      - in: body
  *        name: get name
- *        surname: get surname
  *        password: get password
  *        description: get admins in DB.
  *        schema:
  *          type: object
  *          required:
  *            - name
- *            - surname
  *            - password
  *          properties:
  *            name:
- *              type: string
- *            surname:
  *              type: string
  *            password:
  *              type: string
@@ -71,19 +67,15 @@ router.post("/admin", adminController.postAdmin)
  *        name: adminId
  *      - in : body
  *        name: update name
- *        surname: update surname
  *        password: update password
  *        description: Update admin in DB.
  *        schema:
  *          type: object
  *          required:
  *            - name 
- *            - surname 
  *            - password
  *          properties:
  *            name:
- *              type: string
- *            surname:
  *              type: string
  *            password:
  *              type: string

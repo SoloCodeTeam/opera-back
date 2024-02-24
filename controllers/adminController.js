@@ -25,7 +25,6 @@ exports.postAdmin = async(req,res,next) => {
         await JWT.verify(token,process.env.JWT_KEY)
         const body = {
             name: req.body.name,
-            surname: req.body.surname,
             password: req.body.password,
             category: "admin"
         }
@@ -49,7 +48,6 @@ exports.putAdmin = async(req,res,next) => {
         const id = req.params.adminId
         const body = {
             name: req.body.name,
-            surname: req.body.surname,
             password: req.body.password,
             category: "admin"
         }
