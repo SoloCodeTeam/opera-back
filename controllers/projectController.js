@@ -1,35 +1,41 @@
 const Product = require("../ProductModel/index")
 const JWT = require("jsonwebtoken")
 
-exports.getProject = async(req,res,next) => {
-    return await Product.find({category: "project"}).then(data => {
-        let imageArr
-        const dataArr = []
-        data.map(async(e) => {
-            imageArr = null
-            await Product.find({category: "image", projectId: e._id}).then(d => {
-                imageArr = d
-            }).catch(err => {
-                imageArr = null
-            })
-            const body = {
-                title: e.title,
-                img: e.img,
+exports.getProject = async (req, res, next) => {
+    try {
+        const projects = await Product.find({ category: "project" });
+        const dataArr = await Promise.all(projects.map(async (project) => {
+            const imageArr = await Product.find({ category: "image", projectId: project._id });
+            return {
+                id: project._id,
+                title: project.title,
+                img: project.img,
                 images: imageArr
-            }
-            dataArr.push(body)
-        })
-        res.status(200).json(dataArr)
-    }).catch(err => {
+            };
+        }));
+        return res.status(200).json(dataArr);
+    } catch (err) {
         if (!err.statusCode) {
-            err.satusCode =500}
-        next(err)
-    })
-}
+            err.statusCode = 500;
+        }
+        next(err);
+    }
+};
 
 exports.getProjectId = async(req,res,next) => {
     id = req.params.projectId
-    return await Product.find({_id: id}).then(data => {
+    return await Product.find({_id: id,category: "project"}).then(async(d) => {
+        const images = await Product.find({category: "image",projectId: id});
+        let data
+        console.log(d);
+        d.length > 0 ? d.map(async(e) => {
+            data = {
+                id: e._id,
+                title: e.title,
+                img: e.img,
+                images: images
+            }
+        }) : res.status(404).json({message: "Project not found!"})
         res.status(200).json(data)
     }).catch(err => {
         if (!err.statusCode) {
