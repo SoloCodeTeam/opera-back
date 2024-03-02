@@ -29,10 +29,12 @@ var options = {
         authAction: {JWT: {name: "JWT", schema: {type: "apiKey", in: "header",name: "Authorization", description: ""},value: "Bearer <JWT>"}}
     }
 }
+// app.use(cors({
+//     origin: "https://opera-pro.netlify.app/"
+// }))
 app.use(cors({
-    origin: "https://opera-pro.netlify.app/"
+    origin: "*"
 }))
-
 app.use(express.json())
 app.use((req,res,next) => {
     res.setHeader("Access-Control-Allow-Origin",'*');
