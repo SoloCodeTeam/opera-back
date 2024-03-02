@@ -5,17 +5,18 @@ exports.postImage = async(req,res,next) => {
     try {
         const {token} = req.headers
         await JWT.verify(token,process.env.JWT_KEY)
-        const body = {
-            image: req.body.image,
-            projectId: req.params.projectId,
-            category: "image"
-        }
-        return await Product.create(body).then(data => {
-            res.status(200).json(data)
-        }).catch(err => {
-            if(!err.statusCode) err.statusCode = 500
-            next(err)
-        })
+        req.body.images.length > 0 ? req.body.images.map(async(e) => {
+            const body = {
+                image: e,
+                projectId: req.params.projectId,
+                category: "image"
+            } 
+            await Product.create(body).catch(err => {
+                if(!err.statusCode) err.statusCode = 500
+                next(err)
+            })
+        }) : null
+        return res.stauts(200)
     } catch (error) {
         return res.status(403).json("Not Allowed")
     }

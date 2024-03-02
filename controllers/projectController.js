@@ -27,7 +27,6 @@ exports.getProjectId = async(req,res,next) => {
     return await Product.find({_id: id,category: "project"}).then(async(d) => {
         const images = await Product.find({category: "image",projectId: id});
         let data
-        console.log(d);
         d.length > 0 ? d.map(async(e) => {
             data = {
                 id: e._id,
