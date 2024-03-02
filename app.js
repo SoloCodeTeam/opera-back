@@ -30,7 +30,7 @@ var options = {
     }
 }
 app.use(cors({
-    origin: "https://opera-pro.netlify.app"
+    origin: "https://opera-pro.netlify.app/"
 }))
 
 app.use(express.json())
